@@ -1,0 +1,8 @@
+const bcrypt = require('bcryptjs');
+
+// Hashing a password
+const password = 'userpassword';
+bcrypt.hash(password, 10, (err, hashedPassword) => {
+  if (err) throw err;
+  console.log('Hashed Password:', hashedPassword);
+});
