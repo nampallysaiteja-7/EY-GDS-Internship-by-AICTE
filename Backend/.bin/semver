@@ -1,0 +1,8 @@
+const semver = require('semver');
+
+// Check if a version is valid
+console.log(semver.valid('1.0.0')); // Output: 1.0.0
+console.log(semver.valid('1.0'));   // Output: null
+
+// Compare two versions
+console.log(semver.gt('1.0.0', '0.9.9')); // Output: true
