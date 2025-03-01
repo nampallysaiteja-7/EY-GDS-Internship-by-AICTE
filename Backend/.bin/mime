@@ -1,0 +1,9 @@
+const mime = require('mime');
+
+// Get MIME type based on a file extension
+const mimeType = mime.getType('example.html');
+console.log(mimeType); // Output: text/html
+
+// Get extension based on MIME type
+const extension = mime.getExtension('text/html');
+console.log(extension); // Output: html
