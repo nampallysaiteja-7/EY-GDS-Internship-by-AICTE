@@ -1,0 +1,66 @@
+const mongoose = require('mongoose');
+
+// Create a Mongoose schema for the Auction
+const auctionSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    description: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    startingPrice: {
+      type: Number,
+      required: true,
+    },
+    currentPrice: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    imageUrl: {
+      type: String,
+      default: '',
+    },
+    startDate: {
+      type: Date,
+      required: true,
+    },
+    endDate: {
+      type: Date,
+      required: true,
+    },
+    bids: [
+      {
+        userId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'User',
+        },
+        amount: {
+          type: Number,
+          required: true,
+        },
+        date: {
+          type: Date,
+          default: Date.now,
+        },
+      },
+    ],
+    isActive: {
+      type: Boolean,
+      default: true,
+    },
+  },
+  {
+    timestamps: true, // Automatically adds createdAt and updatedAt fields
+  }
+);
+
+// Mongoose model for Auction
+const Auction = mongoose.model('Auction', auctionSchema);
+
+module.exports = Auction;
